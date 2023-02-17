@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Clients</li>
+      <li>
+        <a href="{% url 'Client_app:list-all-clients' %}">View Clients</a>
+      </li>
+      <li>
+        <a href="{% url 'Mailing_app:mailing-list' %}">View mailings</a>
+      </li>
+      <li>
+        <a href="{% url 'Mailing_app:sent-messages' %}">View sent messages</a>
+      </li>
+
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search Client"></li>
+      <li><a href="{% url 'Client_app:client_add' %}" class="button">Add a new Client</a></li>
+      <li><a href="{% url 'Mailing_app:add_mailing' %}" class="button">Add new Mailing</a></li>
+    </ul>
+  </div>
+</div>

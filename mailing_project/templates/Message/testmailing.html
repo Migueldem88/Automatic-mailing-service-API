@@ -1,0 +1,10 @@
+{% for m in mailing %}
+
+    {{ m.id }}
+    {{ m.maling_start_time }}
+    {{ m.subject }}
+    {{ m.message_text }}
+    {{ m.maling_finish_time }}
+    {{ m.client_filter }}
+    <br>
+{% endfor %}

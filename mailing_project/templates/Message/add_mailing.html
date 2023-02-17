@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add a new Mailing
+
+{% endblock title %}
+
+{% block content %}
+
+{% include "header.html" %}
+<div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1 class="cell">
+                    Add Mailing Data
+                </h1>
+                <div class="cell">
+                    <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                        <div class="cell large-6">
+                            <label>Start time:
+                                {{form.maling_start_time}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Message subject:
+                                {{form.subject}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Message text:
+                                {{form.message_text}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Finish time:
+                                {{form.maling_finish_time}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Client filter:
+                                {{form.client_filter}}
+
+                            </label>
+
+                        </div>
+
+
+                        <div class="cell">
+                            <button type="submit" class="submit success button">Save</button>
+                        </div>
+                        <div class="cell">
+                            <a href="{% url 'Mailing_app:mailing-list' %}">Back</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+{% endblock content %}
+
+

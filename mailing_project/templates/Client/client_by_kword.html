@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de empleados por departamento
+{% endblock title %}
+
+{% block content %}
+    {% include "header.html" %}
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                By kword
+            </div>
+
+        </div>
+    </div>
+    <div class="cell">
+                aqui va la tabla
+            <table>
+              <thead>
+                <tr>
+                  <th width="200">ID</th>
+                  <th>Number</th>
+                  <th width="150">Code</th>
+                  <th width="150">Email</th>
+                    <th width="150">Tag</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for c in clients %}
+                <tr>
+                  <td>{{ c.id}}</td>
+                  <td>{{ c.number}}</td>
+                  <td>{{ c.op_code}}</td>
+                  <td>{{ c.email}}</td>>
+                    <td>{{ c.tag}}</td>>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+
+{% endblock content %}
+
+<h1>Lista de em por dep</h1>
+
+<ul>
+    {% for e in object_list %}
+        <li>{{ e }}</li>
+    {% endfor %}
+</ul>

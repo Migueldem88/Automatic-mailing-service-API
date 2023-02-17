@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Eliminar Empleado
+{% endblock title %}
+
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Delete Client: {{ object.full_name }}</h1>
+
+                <form class="cell" method="POST">{% csrf_token %}
+
+                    <div class="callout">
+                          <h5>Do you really want to delete this Client?</h5>
+                            <button type="submit" class="alert button">YES</button>
+                           <a href="{% url 'Client_app:list-all-clients' %}">NO</a>
+                    </div>
+
+
+                </form>
+        </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edit Client
+
+{% endblock title %}
+
+{% block content %}
+
+{% include "header.html" %}
+<div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1 class="cell">
+                    Edit Message Data
+                </h1>
+                <div class="cell">
+                    <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                        <div class="cell large-6">
+                            <label>Start time:
+                                {{form.maling_start_time}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Finish time:
+                                {{form.maling_finish_time}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Message:
+                                {{form.message_text}}
+                            </label>
+                        </div>
+                        <div class="cell large-6">
+                            <label>Client_filter:
+                                {{form.client_filter}}
+                            </label>
+                        </div>
+
+                        <div class="cell large-6">
+                            <label>Subject:
+                                {{form.subject}}
+                            </label>
+                        </div>
+
+
+                        <div class="cell">
+                            <button type="submit" class="submit success button">send</button>
+                        </div>
+                        <div class="cell">
+                            <a href="{% url 'Client_app:list-all-clients' %}">Back</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+{% endblock content %}
+
+<h4>{{ mailing.message_text }}</h4>
+
+<h4>{{ mailing.client_filter }}</h4>
+

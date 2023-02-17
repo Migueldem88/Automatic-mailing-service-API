@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">List of Mailings</h1>
+
+        <div class="cell">
+
+            <table>
+              <thead>
+                <tr>
+                  <th width="200">ID</th>
+                  <th>Start time</th>
+                    <th width="150">Subject</th>
+                  <th width="150">text</th>
+                  <th width="150">Finish time</th>
+                    <th width="150">client_filter</th>
+                    <th width="150">Edit/Send</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for m in mailing %}
+                <tr>
+                    <td>{{ m.id }}</td>
+                    <td>{{ m.maling_start_time }}</td>
+                    <td>{{ m.subject }}</td>
+                    <td>{{ m.message_text }}</td>
+                     <td>{{ m.maling_finish_time }}</td>
+                     <td>{{ m.client_filter }}</td>
+                    <td>
+                        <a class="button success" href="{% url 'Mailing_app:see-mailing' m.id %}">Edit&send</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+        </div>
+        <div class="cel">
+            {% if is_paginated %}
+            <nav aria-label="Pagination">
+                  <ul class="pagination">
+                      {% if page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                    </li>
+                      {% endif %}
+
+                      {% for pagina in paginator.page_range %}
+
+                      <li class=""><a href="?page={{pagina}}">{{ pagina }}</a></li>
+
+                      {% endfor %}
+
+                      {% if page_obj.has_next %}
+                        <li class="pagination-next">
+                            <a href="?page={{page_obj.next_page_number}}">Next</a>
+                        </li>
+                      {% endif %}
+                  </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+   </div>
+
+
+{% endblock content %}
+
+

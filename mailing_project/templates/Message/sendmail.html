@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Add a new Client
+{% endblock title %}
+
+{% block content %}
+
+{% include "header.html" %}
+<div class="grid-container">
+        <div class="grid-x">
+            <div class="cell">
+                <h1 class="cell">
+                    Add mailing
+                </h1>
+                <div class="cell">
+                    <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                   {{form}}
+                        <div class="cell">
+                            <button type="submit" class="submit success button">Save</button>
+                        </div>
+                        <div class="cell">
+                            <a href="{% url 'Client_app:list-all-clients' %}">Back</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+{% endblock content %}

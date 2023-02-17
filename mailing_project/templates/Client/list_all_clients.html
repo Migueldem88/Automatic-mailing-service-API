@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h1 class="cell">List of Clients</h1>
+
+        <div class="cell">
+
+            <table>
+              <thead>
+                <tr>
+                  <th width="200">ID</th>
+                  <th>Operator code</th>
+                  <th width="150">number</th>
+                  <th width="150">tag</th>
+                    <th width="150">Email</th>
+                    <th width="150">Edit</th>
+                    <th width="150">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for c in clients %}
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.op_code }}</td>
+                     <td>{{ c.number }}</td>
+                     <td>{{ c.tag }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>
+                        <a class="button success" href="{% url 'Client_app:update-client' c.id %}">Edit</a>
+                    </td>
+                    <td>
+                        <a class="button alert" href="{% url 'Client_app:delete-client' c.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+        </div>
+        <div class="cel">
+            {% if is_paginated %}
+            <nav aria-label="Pagination">
+                  <ul class="pagination">
+                      {% if page_obj.has_previous %}
+                    <li class="pagination-previous">
+                        <a href="?page={{page_obj.previous_page_number}}">Previous</a>
+                    </li>
+                      {% endif %}
+
+                      {% for pagina in paginator.page_range %}
+
+                      <li class=""><a href="?page={{pagina}}">{{ pagina }}</a></li>
+
+                      {% endfor %}
+
+                      {% if page_obj.has_next %}
+                        <li class="pagination-next">
+                            <a href="?page={{page_obj.next_page_number}}">Next</a>
+                        </li>
+                      {% endif %}
+                  </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+   </div>
+
+
+{% endblock content %}
+
+
